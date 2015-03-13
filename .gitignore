@@ -1,0 +1,9 @@
+# Ignore uploads from previous years, they just cause bloat in the repo
+/wp-content/uploads/2010
+/wp-content/uploads/2011
+/wp-content/uploads/2012
+/wp-content/uploads/2013
+/wp-content/uploads/2014
+
+# Ignore zip files
+*.zip
