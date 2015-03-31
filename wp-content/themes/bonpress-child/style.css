@@ -82,9 +82,21 @@ body{
 	background: transparent;
 }
 .post {
-	background: transparent;
 	border: none;
+	background: transparent;
 }
+.blog .post {
+	background: #234;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+.blog .post .entry {
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+}
+
 #menu {
 	text-align: right;
 	margin: 0;
@@ -139,8 +151,11 @@ body{
 	line-height: 140%;
 	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.88);
 }
+/* Blog */
+.post_icon {
+	display: none; /*remove in template */
+}
 .article_top {
-	background: #234;
 	padding: 20px 60px 10px 60px;
 }
 .article_top h2, .article_top h2 a {
@@ -152,6 +167,43 @@ body{
 	margin: 0;
 	padding: 0;
 }
+#comments {
+	background: #fff;
+	margin: 0;
+	padding: 40px 50px 30px 50px;
+	font-family: inherit;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	color: #303030;
+	background: #fafaf6;
+}
+#respond label, #respond .submit, .comment-list li div p, .comment-author cite.fn a {
+	font-family: inherit;
+	font-size: inherit;
+	color: #303030;
+}
+.comment-meta {
+	font-size: 80%;
+}
+#formContent p {
+	background: transparent;
+}
+
+.postmetadata {
+	color: #eee;
+	padding: 0px 50px 10px 50px;
+	font-size: 90%;
+}
+#respond .submit {
+	background: #ffe47f;
+	padding: 7px 15px;
+}
+#respond input, #respond textarea {
+	background: #fafbd6;
+	border-color: #8e8d89 #bcb9b1 #bcb9b1 #8e8d89 ;
+}
+/* logo */
 #logo {
 	background: none;
 	padding: 10px 0 0;
