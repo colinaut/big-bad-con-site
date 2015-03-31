@@ -1,0 +1,179 @@
+0000.000 (0) Opened log file at time: Tue, 31 Mar 2015 00:52:56 +0000 on http://www.bigbadcon.dev
+0000.004 (0) UpdraftPlus WordPress backup plugin (http://updraftplus.com): 1.9.60 WP: 4.1.1 PHP: 5.4.19 (Darwin colinaut-2.local 14.1.0 Darwin Kernel Version 14.1.0: Thu Feb 26 19:26:47 PST 2015; root:xnu-2782.10.73~1/RELEASE_X86_64 x86_64) MySQL: 5.1.44 Server: Apache/2.4.4 (Unix) PHP/5.4.19 OpenSSL/1.0.1e mod_perl/2.0.8-dev Perl/v5.16.3 safe_mode: 0 max_execution_time: 900 memory_limit: 256M (used: 35.2M | 35.8M) multisite: N mcrypt: Y LANG:  ZipArchive::addFile: Y
+0000.005 (0) Free space on disk containing Updraft's temporary directory: 19100.3 Mb
+0000.012 (0) Tasks: Backup files: 0 (schedule: unset) Backup DB: 1 (schedule: unset)
+0000.015 (0) Requesting semaphore lock (d)
+0000.019 (0) Set semaphore last lock (d) time to 2015-03-31 00:52:56
+0000.020 (0) Semaphore lock (d) complete
+0000.025 (0) Backup run: resumption=0, nonce=a389f0f24066, begun at=1427763176 (0s ago), job type=backup
+0000.027 (0) Scheduling a resumption (1) after 300 seconds (1427763476) in case this run gets aborted
+0000.042 (0) This backup run is not intended for files - skipping
+0000.043 (0) Beginning creation of database dump (WordPress DB)
+0000.078 (0) Table wp_options: Total expected rows (approximate): 836
+0000.159 (0) Table wp_options: Total rows added: 834 in 0.08 seconds
+0000.160 (0) Table wp_options: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_options.table.gz - 225.5 Kb)
+0000.164 (0) Table wp_users: Total expected rows (approximate): 941
+0000.226 (0) Table wp_users: Total rows added: 941 in 0.06 seconds
+0000.228 (0) Table wp_users: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_users.table.gz - 62.5 Kb)
+0000.231 (0) Table wp_usermeta: Total expected rows (approximate): 14351
+0000.665 (0) Table wp_usermeta: Total rows added: 14351 in 0.43 seconds
+0000.667 (0) Table wp_usermeta: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_usermeta.table.gz - 111 Kb)
+0000.672 (0) Table wp_commentmeta: Total expected rows (approximate): 1543
+0000.734 (0) Table wp_commentmeta: Total rows added: 1543 in 0.06 seconds
+0000.736 (0) Table wp_commentmeta: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_commentmeta.table.gz - 27.4 Kb)
+0000.743 (0) Table wp_comments: Total expected rows (approximate): 556
+0000.825 (0) Table wp_comments: Total rows added: 556 in 0.08 seconds
+0000.828 (0) Table wp_comments: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_comments.table.gz - 66.5 Kb)
+0000.834 (0) Table wp_links: Total expected rows (approximate): 9
+0000.842 (0) Table wp_links: Total rows added: 9 in 0.01 seconds
+0000.843 (0) Table wp_links: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_links.table.gz - 0.8 Kb)
+0000.848 (0) Table wp_postmeta: Total expected rows (approximate): 21596
+0001.698 (0) Table wp_postmeta: Total rows added: 21596 in 0.85 seconds
+0001.701 (0) Table wp_postmeta: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_postmeta.table.gz - 208.2 Kb)
+0001.706 (0) Table wp_posts: Total expected rows (approximate): 1504
+0001.984 (0) Table wp_posts: Total rows added: 1504 in 0.28 seconds
+0001.986 (0) Table wp_posts: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_posts.table.gz - 405.2 Kb)
+0001.992 (0) Table wp_term_relationships: Total expected rows (approximate): 3879
+0002.078 (0) Table wp_term_relationships: Total rows added: 3879 in 0.08 seconds
+0002.082 (0) Table wp_term_relationships: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_term_relationships.table.gz - 10.3 Kb)
+0002.087 (0) Table wp_term_taxonomy: Total expected rows (approximate): 97
+0002.095 (0) Table wp_term_taxonomy: Total rows added: 97 in 0.01 seconds
+0002.097 (0) Table wp_term_taxonomy: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_term_taxonomy.table.gz - 1.2 Kb)
+0002.109 (0) Table wp_terms: Total expected rows (approximate): 96
+0002.128 (0) Table wp_terms: Total rows added: 96 in 0.01 seconds
+0002.131 (0) Table wp_terms: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_terms.table.gz - 1.7 Kb)
+0002.138 (0) Table wp_bad_behavior: Total expected rows (approximate): 5895
+0002.691 (0) Table wp_bad_behavior: Total rows added: 5895 in 0.55 seconds
+0002.694 (0) Table wp_bad_behavior: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_bad_behavior.table.gz - 338.1 Kb)
+0002.698 (0) Table wp_em_bookings: Total expected rows (approximate): 4240
+0002.966 (0) Table wp_em_bookings: Total rows added: 4240 in 0.27 seconds
+0002.967 (0) Table wp_em_bookings: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_em_bookings.table.gz - 45.6 Kb)
+0002.971 (0) Table wp_em_categories: Total expected rows (approximate): 4
+0002.976 (0) Table wp_em_categories: Total rows added: 4 in 0.00 seconds
+0002.978 (0) Table wp_em_categories: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_em_categories.table.gz - 0.4 Kb)
+0002.982 (0) Table wp_em_events: Total expected rows (approximate): 596
+0003.123 (0) Table wp_em_events: Total rows added: 596 in 0.14 seconds
+0003.125 (0) Table wp_em_events: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_em_events.table.gz - 215.2 Kb)
+0003.128 (0) Table wp_em_locations: Total expected rows (approximate): 14
+0003.132 (0) Table wp_em_locations: Total rows added: 14 in 0.00 seconds
+0003.133 (0) Table wp_em_locations: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_em_locations.table.gz - 0.7 Kb)
+0003.136 (0) Table wp_em_meta: Total expected rows (approximate): 88
+0003.142 (0) Table wp_em_meta: Total rows added: 88 in 0.00 seconds
+0003.144 (0) Table wp_em_meta: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_em_meta.table.gz - 1.4 Kb)
+0003.152 (0) Table wp_em_tickets: Total expected rows (approximate): 573
+0003.180 (0) Table wp_em_tickets: Total rows added: 573 in 0.03 seconds
+0003.182 (0) Table wp_em_tickets: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_em_tickets.table.gz - 4.8 Kb)
+0003.186 (0) Table wp_em_tickets_bookings: Total expected rows (approximate): 3822
+0003.263 (0) Table wp_em_tickets_bookings: Total rows added: 3822 in 0.08 seconds
+0003.265 (0) Table wp_em_tickets_bookings: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_em_tickets_bookings.table.gz - 24.3 Kb)
+0003.268 (0) Table wp_events_answer_tbl: Total expected rows (approximate): 0
+0003.271 (0) Table wp_events_answer_tbl: Total rows added: 0 in 0.00 seconds
+0003.272 (0) Table wp_events_answer_tbl: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_events_answer_tbl.table.gz - 0.3 Kb)
+0003.277 (0) Table wp_events_attendee: Total expected rows (approximate): 1
+0003.283 (0) Table wp_events_attendee: Total rows added: 1 in 0.00 seconds
+0003.284 (0) Table wp_events_attendee: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_events_attendee.table.gz - 0.6 Kb)
+0003.287 (0) Table wp_events_cat_detail_tbl: Total expected rows (approximate): 0
+0003.291 (0) Table wp_events_cat_detail_tbl: Total rows added: 0 in 0.00 seconds
+0003.293 (0) Table wp_events_cat_detail_tbl: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_events_cat_detail_tbl.table.gz - 0.4 Kb)
+0003.298 (0) Table wp_events_category_detail: Total expected rows (approximate): 0
+0003.302 (0) Table wp_events_category_detail: Total rows added: 0 in 0.00 seconds
+0003.304 (0) Table wp_events_category_detail: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_events_category_detail.table.gz - 0.3 Kb)
+0003.310 (0) Table wp_events_detail: Total expected rows (approximate): 2
+0003.321 (0) Table wp_events_detail: Total rows added: 2 in 0.01 seconds
+0003.324 (0) Table wp_events_detail: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_events_detail.table.gz - 1.6 Kb)
+0003.330 (0) Table wp_events_organization: Total expected rows (approximate): 1
+0003.339 (0) Table wp_events_organization: Total rows added: 1 in 0.01 seconds
+0003.341 (0) Table wp_events_organization: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_events_organization.table.gz - 0.8 Kb)
+0003.347 (0) Table wp_events_payment_transactions: Total expected rows (approximate): 0
+0003.354 (0) Table wp_events_payment_transactions: Total rows added: 0 in 0.01 seconds
+0003.355 (0) Table wp_events_payment_transactions: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_events_payment_transactions.table.gz - 0.5 Kb)
+0003.360 (0) Table wp_events_paypal_transactions: Total expected rows (approximate): 0
+0003.365 (0) Table wp_events_paypal_transactions: Total rows added: 0 in 0.00 seconds
+0003.367 (0) Table wp_events_paypal_transactions: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_events_paypal_transactions.table.gz - 0.5 Kb)
+0003.372 (0) Table wp_events_question_tbl: Total expected rows (approximate): 0
+0003.376 (0) Table wp_events_question_tbl: Total rows added: 0 in 0.00 seconds
+0003.378 (0) Table wp_events_question_tbl: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_events_question_tbl.table.gz - 0.4 Kb)
+0003.383 (0) Table wp_frm_fields: Total expected rows (approximate): 389
+0003.427 (0) Table wp_frm_fields: Total rows added: 389 in 0.04 seconds
+0003.428 (0) Table wp_frm_fields: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_frm_fields.table.gz - 31.9 Kb)
+0003.432 (0) Table wp_frm_forms: Total expected rows (approximate): 54
+0003.446 (0) Table wp_frm_forms: Total rows added: 54 in 0.01 seconds
+0003.447 (0) Table wp_frm_forms: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_frm_forms.table.gz - 7.4 Kb)
+0003.452 (0) Table wp_frm_item_metas: Total expected rows (approximate): 8917
+0003.778 (0) Table wp_frm_item_metas: Total rows added: 8917 in 0.33 seconds
+0003.780 (0) Table wp_frm_item_metas: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_frm_item_metas.table.gz - 240.6 Kb)
+0003.783 (0) Table wp_frm_items: Total expected rows (approximate): 1024
+0003.856 (0) Table wp_frm_items: Total rows added: 1024 in 0.07 seconds
+0003.857 (0) Table wp_frm_items: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_frm_items.table.gz - 48.8 Kb)
+0003.861 (0) Table wp_golfresult: Total expected rows (approximate): 6
+0003.864 (0) Table wp_golfresult: Total rows added: 6 in 0.00 seconds
+0003.865 (0) Table wp_golfresult: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_golfresult.table.gz - 0.4 Kb)
+0003.868 (0) Table wp_golftable: Total expected rows (approximate): 1
+0003.873 (0) Table wp_golftable: Total rows added: 1 in 0.00 seconds
+0003.875 (0) Table wp_golftable: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_golftable.table.gz - 0.4 Kb)
+0003.878 (0) Table wp_sabre_table: Total expected rows (approximate): 128541
+0015.592 (0) Table wp_sabre_table: Total rows added: 128541 in 11.71 seconds
+0015.594 (0) Table wp_sabre_table: finishing file (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_sabre_table.table.gz - 1790.3 Kb)
+0015.598 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_options.table.gz (1/35): adding to final database dump
+0015.655 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_users.table.gz (2/35): adding to final database dump
+0015.670 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_usermeta.table.gz (3/35): adding to final database dump
+0015.729 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_commentmeta.table.gz (4/35): adding to final database dump
+0015.740 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_comments.table.gz (5/35): adding to final database dump
+0015.759 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_links.table.gz (6/35): adding to final database dump
+0015.761 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_postmeta.table.gz (7/35): adding to final database dump
+0015.872 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_posts.table.gz (8/35): adding to final database dump
+0015.964 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_term_relationships.table.gz (9/35): adding to final database dump
+0015.974 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_term_taxonomy.table.gz (10/35): adding to final database dump
+0015.976 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_terms.table.gz (11/35): adding to final database dump
+0015.978 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_bad_behavior.table.gz (12/35): adding to final database dump
+0016.090 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_em_bookings.table.gz (13/35): adding to final database dump
+0016.112 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_em_categories.table.gz (14/35): adding to final database dump
+0016.114 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_em_events.table.gz (15/35): adding to final database dump
+0016.162 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_em_locations.table.gz (16/35): adding to final database dump
+0016.163 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_em_meta.table.gz (17/35): adding to final database dump
+0016.165 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_em_tickets.table.gz (18/35): adding to final database dump
+0016.168 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_em_tickets_bookings.table.gz (19/35): adding to final database dump
+0016.183 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_events_answer_tbl.table.gz (20/35): adding to final database dump
+0016.186 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_events_attendee.table.gz (21/35): adding to final database dump
+0016.188 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_events_cat_detail_tbl.table.gz (22/35): adding to final database dump
+0016.189 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_events_category_detail.table.gz (23/35): adding to final database dump
+0016.190 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_events_detail.table.gz (24/35): adding to final database dump
+0016.192 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_events_organization.table.gz (25/35): adding to final database dump
+0016.193 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_events_payment_transactions.table.gz (26/35): adding to final database dump
+0016.195 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_events_paypal_transactions.table.gz (27/35): adding to final database dump
+0016.196 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_events_question_tbl.table.gz (28/35): adding to final database dump
+0016.197 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_frm_fields.table.gz (29/35): adding to final database dump
+0016.210 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_frm_forms.table.gz (30/35): adding to final database dump
+0016.214 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_frm_item_metas.table.gz (31/35): adding to final database dump
+0016.281 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_frm_items.table.gz (32/35): adding to final database dump
+0016.298 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_golfresult.table.gz (33/35): adding to final database dump
+0016.299 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_golftable.table.gz (34/35): adding to final database dump
+0016.301 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db-table-wp_sabre_table.table.gz (35/35): adding to final database dump
+0017.040 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db.gz: finished writing out complete database file (3840 Kb)
+0017.107 (0) Total database tables backed up: 35 (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db.gz, size: 3969238, checksum (SHA1): 1643ac43ff82cd6cf022858d581aa0fc2e09207f)
+0017.110 (0) Saving backup history
+0017.114 (0) backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db.gz: db: This file has not yet been successfully uploaded: will queue
+0017.117 (0) Requesting upload of the files that have not yet been successfully uploaded (1)
+0017.119 (0) Cloud backup selection: none
+0017.119 (0) No remote despatch: user chose no remote backup service
+0017.121 (0) Recording as successfully uploaded: backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db.gz (6d2ab7ae58fe9bc991f260859dd31b0e)
+0017.125 (0) Retain: beginning examination of existing backup sets; user setting: retain_files=2, retain_db=2
+0017.126 (0) Number of backup sets in history: 3
+0017.127 (0) Examining backup set with datestamp: 1427763176 (Mar 31 2015 00:52:56)
+0017.128 (0) 1427763176: db: this set includes a database (backup_2015-03-30-1752_Big_Bad_Con_2015__Looking_for_n_a389f0f24066-db.gz); db count is now 1
+0017.129 (0) 1427763176: this backup set remains non-empty (0/1); will retain in history
+0017.130 (0) Examining backup set with datestamp: 1427752327 (Mar 30 2015 21:52:07)
+0017.131 (0) 1427752327: db: this set includes a database (backup_2015-03-30-1452_Big_Bad_Con_2015__Looking_for_n_b118b7d29f72-db.gz); db count is now 2
+0017.132 (0) 1427752327: this backup set remains non-empty (0/1); will retain in history
+0017.133 (0) Examining backup set with datestamp: 1426056465 (Mar 11 2015 06:47:45)
+0017.134 (0) 1426056465: db: this set includes a database (backup_2015-03-10-2347_Big_Bad_Con_2015__Looking_for_n_11dc3c656ede-db.gz); db count is now 3
+0017.135 (0) 1426056465: db: over retain limit (2); will delete this database
+0017.135 (0) Delete file: backup_2015-03-10-2347_Big_Bad_Con_2015__Looking_for_n_11dc3c656ede-db.gz, service=none
+0017.138 (0) 1426056465: this backup set remains non-empty (1/0); will retain in history
+0017.139 (0) Retain: saving new backup history (sets now: 3) and finishing retain operation
+0017.141 (0) Resume backup (a389f0f24066, 0): finish run
+0017.143 (0) Decremented the semaphore (d) by 1
+0017.144 (0) Semaphore (d) unlocked
+0017.145 (0) There were no errors in the uploads, so the 'resume' event (1) is being unscheduled
+0017.147 (0) No email will/can be sent - the user has not configured an email address.
+0017.149 (0) The backup apparently succeeded and is now complete

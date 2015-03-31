@@ -158,8 +158,10 @@ body{
 	padding: 10px 0 0;
 	/display: none;
 }
-#logo img {
-	visibility: hidden;
+#logo h1 a {
+	text-indent: -10000px;
+	display: block;
+	height:220px;
 }
 
 /* Sidebar */
