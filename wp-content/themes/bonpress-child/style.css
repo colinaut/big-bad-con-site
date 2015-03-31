@@ -151,6 +151,15 @@ body{
 	line-height: 140%;
 	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.88);
 }
+
+.entry h1 {
+	font-size: 40px;
+	background: #ddc;
+	margin: 10px -50px;
+	font-family: Oswald;
+	padding: 15px 50px 5px;
+}
+.entry h1:first-child {margin-top:0;}
 /* Blog */
 .post_icon {
 	display: none; /*remove in template */
@@ -317,6 +326,10 @@ th {
 		margin: 20px -30px;
 		font-size: 1.1rem;
 	}
+	.entry h1 {
+		margin: 10px -30px;
+		padding: 15px 30px 5px;
+	}
 }
 
 @media only screen and (min-width: 320px) and (max-width: 640px) {
@@ -345,5 +358,9 @@ th {
 	}
 	body {
 		background-size: auto;
+	}
+	.entry h1 {
+		margin: 10px -20px;
+		padding: 15px 20px 5px;
 	}
 }
