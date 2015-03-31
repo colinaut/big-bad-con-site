@@ -64,7 +64,7 @@ body{
 	margin-top:32px;
 }
 
-#main, #footer .widgets {
+#main, #footer .widgets, #footer .copyright {
 	margin-left: 305px;
 }
 #main {
@@ -271,9 +271,13 @@ body{
 	border-top: 4px solid rgba(241, 89, 42, 1);
 }
 #footer .copyright {
-	margin-left: 285px;
 	width: auto;
 	padding: 10px 0 10px 0px;
+	color: #9e9c9c;
+}
+#footer .widget h3 {
+	font-family: inherit;
+	font-size: inherit;
 }
 /* Events */
 #current-events {
