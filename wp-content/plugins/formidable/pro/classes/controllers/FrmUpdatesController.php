@@ -143,7 +143,7 @@ class FrmUpdatesController{
 </div>
 <div class="clear"></div>
 </div>
-<p class="frm_aff_link"><a href="http://formidablepro.com/account/" target="_blank"><?php _e('Account', 'formidable') ?></a></p>
+<p class="frm_aff_link"><a href="https://formidablepro.com/account/?action=licenses" target="_blank"><?php _e('Account', 'formidable') ?></a></p>
 <?php } ?>
 
 <div class="clear"></div>

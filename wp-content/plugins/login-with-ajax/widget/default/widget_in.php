@@ -13,7 +13,7 @@
 	<span class="lwa-title-sub" style="display:none"><?php echo __( 'Hi', 'login-with-ajax' ) . " " . $current_user->display_name  ?></span>
 	<table>
 		<tr>
-			<td class="avatar" class="lwa-avatar">
+			<td class="avatar lwa-avatar">
 				<?php echo get_avatar( $current_user->ID, $size = '50' );  ?>
 			</td>
 			<td class="lwa-info">

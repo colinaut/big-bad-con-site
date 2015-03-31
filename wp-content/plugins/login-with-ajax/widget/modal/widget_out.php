@@ -36,6 +36,9 @@
 	                        <input type="submit" name="wp-submit" class="lwa-wp-submit" value="<?php esc_attr_e('Log In','login-with-ajax'); ?>" tabindex="100" />
 	                        <input type="hidden" name="lwa_profile_link" value="<?php echo !empty($lwa_data['profile_link']) ? 1:0 ?>" />
                         	<input type="hidden" name="login-with-ajax" value="login" />
+							<?php if( !empty($lwa_data['redirect']) ): ?>
+							<input type="hidden" name="redirect_to" value="<?php echo esc_url($lwa_data['redirect']); ?>" />
+							<?php endif; ?>
 	                    </td>
 	                    <td class="lwa-links">
 	                        <input name="rememberme" type="checkbox" id="lwa_rememberme" value="forever" /> <label><?php esc_html_e( 'Remember Me','login-with-ajax' ) ?></label>
@@ -61,16 +64,18 @@
 	                    </td>
 	                </tr>
 	                <tr class="lwa-remember-email">	                    
-	                	<td>  
+	                	<td>
+	                		<label>
 	                        <?php $msg = __("Enter username or email", 'login-with-ajax'); ?>
 	                        <input type="text" name="user_login" id="lwa_user_remember" value="<?php echo esc_attr($msg); ?>" onfocus="if(this.value == '<?php echo esc_attr($msg); ?>'){this.value = '';}" onblur="if(this.value == ''){this.value = '<?php echo esc_attr($msg); ?>'}" />
+	                        </label>
 							<?php do_action('lostpassword_form'); ?>
 	                    </td>
 	                </tr>
 	                <tr>
 	                    <td>
 	                        <input type="submit" value="<?php esc_attr_e("Get New Password", 'login-with-ajax'); ?>" />
-	                          <a href="#" class="lwa-links-remember-cancel"><?php esc_html_e("Cancel",'login-with-ajax'); ?></a>
+	                        <a href="#" class="lwa-links-remember-cancel"><?php esc_html_e("Cancel",'login-with-ajax'); ?></a>
 	                        <input type="hidden" name="login-with-ajax" value="remember" />
 	                    </td>	                
 	                </tr>
@@ -89,14 +94,18 @@
 		                </tr>
 		                <tr class="lwa-username">
 		                    <td>  
+		                    	<label>
 		                        <?php $msg = __('Username','login-with-ajax') ?>
-		                        <input type="text" name="user_login" id="user_login"  value="<?php echo esc_attr($msg); ?>" onfocus="if(this.value == '<?php echo esc_attr($msg); ?>'){this.value = '';}" onblur="if(this.value == ''){this.value = '<?php echo esc_attr($msg); ?>'}" /></label>   
+		                        <input type="text" name="user_login" id="user_login"  value="<?php echo esc_attr($msg); ?>" onfocus="if(this.value == '<?php echo esc_attr($msg); ?>'){this.value = '';}" onblur="if(this.value == ''){this.value = '<?php echo esc_attr($msg); ?>'}" />
+		                        </label> 
 		                    </td>
 		                </tr>
 		                <tr class="lwa-email">
-		                    <td>  
+		                    <td>
+		                    	<label>
 		                        <?php $msg = __('E-mail','login-with-ajax') ?>
-		                        <input type="text" name="user_email" id="user_email"  value="<?php echo esc_attr($msg); ?>" onfocus="if(this.value == '<?php echo esc_attr($msg); ?>'){this.value = '';}" onblur="if(this.value == ''){this.value = '<?php echo esc_attr($msg); ?>'}"/></label>   
+		                        <input type="text" name="user_email" id="user_email"  value="<?php echo esc_attr($msg); ?>" onfocus="if(this.value == '<?php echo esc_attr($msg); ?>'){this.value = '';}" onblur="if(this.value == ''){this.value = '<?php echo esc_attr($msg); ?>'}"/>
+		                        </label>
 		                    </td>
 		                </tr>
 		                <tr>

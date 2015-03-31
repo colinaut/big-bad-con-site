@@ -303,7 +303,7 @@ class FrmProDisplaysController{
         }
         
         global $frmpro_display, $copy_display;
-        $copy_display = $frmpro_display->getOne($_GET['copy_id']);
+        $copy_display = $frmpro_display->getOne($_GET['copy_id'], false, false, array('check_post' => true));
         if ( $copy_display ) {
             $content = $copy_display->post_content;
         }
@@ -892,7 +892,7 @@ class FrmProDisplaysController{
         
         extract(shortcode_atts($defaults, $atts));
         
-        $display = $frmpro_display->getOne($id, false, true, array('check_post' => false));
+        $display = $frmpro_display->getOne($id, false, true);
         
         $user_id = FrmProAppHelper::get_user_id_param($user_id);
         
@@ -919,7 +919,7 @@ class FrmProDisplaysController{
     
     public static function custom_display($id){
         global $frmpro_display;
-        if ($display = $frmpro_display->getOne($id))    
+        if ($display = $frmpro_display->getOne($id, false, false, array('check_post' => true)))    
             return self::get_display_data($display);
     }
     

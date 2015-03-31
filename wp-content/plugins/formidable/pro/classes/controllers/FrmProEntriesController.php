@@ -1932,7 +1932,7 @@ success:function(msg){jQuery('#frm_create_entry').fadeOut('slow');}
             'id' => (isset($frm_vars['editing_entry']) ? $frm_vars['editing_entry'] : false), 
             'label' => __('Edit'), 'cancel' => __('Cancel', 'formidable'), 
             'class' => '', 'page_id' => (($post) ? $post->ID : 0), 'html_id' => false,
-            'prefix' => '', 'form_id' => false
+            'prefix' => '', 'form_id' => false, 'title' => '',
         ), $atts));
 
         $link = '';
@@ -1979,12 +1979,15 @@ success:function(msg){jQuery('#frm_create_entry').fadeOut('slow');}
             $link .= "<script type='text/javascript'>window.onload= function(){var frm_pos=jQuery('#". $prefix . $entry_id ."').offset();window.scrollTo(frm_pos.left,frm_pos.top);}</script>";
         }
 
+        if ( empty($title) ) {
+            $title = $label;
+        }
             
         if(!$html_id)
             $html_id = "frm_edit_{$entry_id}";
           
         $frm_vars['forms_loaded'][] = true;  
-        $link .= "<a href='javascript:frmEditEntry($entry_id,\"$prefix\",$page_id,$form_id,\"". htmlspecialchars(str_replace("'", '\"', $cancel)) ."\",\"$class\")' class='frm_edit_link $class' id='$html_id'>$label</a>\n";
+        $link .= "<a href='javascript:frmEditEntry($entry_id,\"$prefix\",$page_id,$form_id,\"". htmlspecialchars(str_replace("'", '\"', $cancel)) ."\",\"$class\")' class='frm_edit_link $class' id='". esc_attr($html_id) ."' title='". esc_attr($title) ."'>$label</a>\n";
 
         return $link;
     }
@@ -1995,7 +1998,8 @@ success:function(msg){jQuery('#frm_create_entry').fadeOut('slow');}
         extract(shortcode_atts(array(
             'id' => (isset($frm_vars['editing_entry']) ? $frm_vars['editing_entry'] : false),
             'field_id' => false, 'form_id' => false, 
-            'label' => 'Update', 'class' => '', 'value' => '', 'message' => ''
+            'label' => 'Update', 'class' => '', 'value' => '', 'message' => '',
+            'title' => '',
         ), $atts));
         
         $link = '';
@@ -2030,7 +2034,11 @@ success:function(msg){jQuery('#frm_create_entry').fadeOut('slow');}
         $num = (int)$num + 1;
         $frm_update_link[$entry_id .'-'. $field_id] = $num;
         
-        $link = '<a href="#" onclick="frmUpdateField('. $entry_id .','. $field_id .',\''. $value .'\',\''. $message .'\','. $num .');return false;" id="frm_update_field_'. $entry_id .'_'. $field_id .'_'. $num .'" class="frm_update_field_link '. $class .'">'. $label .'</a>';
+        if ( empty($title) ) {
+            $title = $label;
+        }
+        
+        $link = '<a href="#" onclick="frmUpdateField('. $entry_id .','. $field_id .',\''. $value .'\',\''. htmlspecialchars(str_replace("'", '\"', $message)) .'\','. $num .');return false;" id="frm_update_field_'. $entry_id .'_'. $field_id .'_'. $num .'" class="frm_update_field_link '. $class .'" title="'. esc_attr($title) .'">'. $label .'</a>';
         
         return $link;
     }
@@ -2040,7 +2048,8 @@ success:function(msg){jQuery('#frm_create_entry').fadeOut('slow');}
         extract(shortcode_atts(array(
             'id' => (isset($frm_vars['editing_entry']) ? $frm_vars['editing_entry'] : false), 'label' => __('Delete'), 
             'confirm' => __('Are you sure you want to delete that entry?', 'formidable'), 
-            'class' => '', 'page_id' => (($post) ? $post->ID : 0), 'html_id' => false, 'prefix' => ''
+            'class' => '', 'page_id' => (($post) ? $post->ID : 0), 'html_id' => false, 'prefix' => '',
+            'title' => '',
         ), $atts));
         
         $entry_id = ($id and is_numeric($id)) ? $id : ((is_admin() and !defined('DOING_AJAX')) ? FrmAppHelper::get_param('id', false) : FrmAppHelper::get_param('entry', false));
@@ -2089,7 +2098,10 @@ success:function(msg){jQuery('#frm_create_entry').fadeOut('slow');}
         if(empty($label)){
             $link .= add_query_arg(array('frm_action' => 'destroy', 'entry' => $entry_id), get_permalink($page_id));
         }else{
-            $link .= "<a href='". add_query_arg(array('frm_action' => 'destroy', 'entry' => $entry_id), get_permalink($page_id)) ."' class='$class' onclick='return confirm(\"". $confirm ."\")'>$label</a>\n";
+            if ( empty($title) ) {
+                $title = $label;
+            }
+            $link .= "<a href='". add_query_arg(array('frm_action' => 'destroy', 'entry' => $entry_id), get_permalink($page_id)) ."' class='$class' onclick='return confirm(\"". $confirm ."\")' title='". esc_attr($title) ."'>$label</a>\n";
         }
             
         return $link;

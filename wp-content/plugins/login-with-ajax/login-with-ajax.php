@@ -4,7 +4,7 @@ Plugin Name: Login With Ajax
 Plugin URI: http://wordpress.org/extend/plugins/login-with-ajax/
 Description: Ajax driven login widget. Customisable from within your template folder, and advanced settings from the admin area.
 Author: Marcus Sykes
-Version: 3.1.2
+Version: 3.1.4
 Author URI: http://msyk.es
 Tags: Login, Ajax, Redirect, BuddyPress, MU, WPMU, sidebar, admin, widget
 
@@ -139,6 +139,7 @@ class LoginWithAjax {
 			    $return = self::register();
 			    break;
 		}
+		@header( 'Content-Type: application/javascript; charset=UTF-8', true ); //add this for HTTP -> HTTPS requests which assume it's a cross-site request
 		echo self::json_encode(apply_filters('lwa_ajax_'.$_REQUEST["login-with-ajax"], $return));
 		exit();
 	}
@@ -147,7 +148,8 @@ class LoginWithAjax {
 	public static function login(){
 		$return = array(); //What we send back
 		if( !empty($_REQUEST['log']) && !empty($_REQUEST['pwd']) && trim($_REQUEST['log']) != '' && trim($_REQUEST['pwd'] != '') ){
-			$loginResult = wp_signon();
+			$credentials = array('user_login' => $_REQUEST['log'], 'user_password'=> $_REQUEST['pwd'], 'remember' => !empty($_REQUEST['rememberme']));
+			$loginResult = wp_signon($credentials);
 			$user_role = 'null';
 			if ( strtolower(get_class($loginResult)) == 'wp_user' ) {
 				//User login successful
@@ -157,6 +159,7 @@ class LoginWithAjax {
 				$return['message'] = __("Login Successful, redirecting...",'login-with-ajax');
 				//Do a redirect if necessary
 				$redirect = self::getLoginRedirect(self::$current_user);
+				if( !empty($_REQUEST['redirect_to']) ) $redirect= wp_sanitize_redirect($_REQUEST['redirect_to']);
 				if( $redirect != '' ){
 					$return['redirect'] = $redirect;
 				}
@@ -193,24 +196,29 @@ class LoginWithAjax {
 	 */
 	public static function register(){
 	    $return = array();
-	    if( !function_exists('register_new_user') ){
-	        include_once('registration.php'); //in ajax we don't have access to this function, so include our own copy of the function
-	    }
-		$errors = register_new_user($_POST['user_login'], $_POST['user_email']);
-		if ( !is_wp_error($errors) ) {
-			//Success
-			$return['result'] = true;
-			$return['message'] = __('Registration complete. Please check your e-mail.','login-with-ajax');
-			//add user to blog if multisite
-			if( is_multisite() ){
-			    add_user_to_blog(get_current_blog_id(), $errors, 'subscriber');
+	    if( get_option('users_can_register') ){
+		    if( !function_exists('register_new_user') ){
+		        include_once('registration.php'); //in ajax we don't have access to this function, so include our own copy of the function
+		    }
+			$errors = register_new_user($_REQUEST['user_login'], $_REQUEST['user_email']);
+			if ( !is_wp_error($errors) ) {
+				//Success
+				$return['result'] = true;
+				$return['message'] = __('Registration complete. Please check your e-mail.','login-with-ajax');
+				//add user to blog if multisite
+				if( is_multisite() ){
+				    add_user_to_blog(get_current_blog_id(), $errors, get_option('default_role'));
+				}
+			}else{
+				//Something's wrong
+				$return['result'] = false;
+				$return['error'] = $errors->get_error_message();
 			}
-		}else{
-			//Something's wrong
-			$return['result'] = false;
-			$return['error'] = $errors->get_error_message();
-		}
-		$return['action'] = 'register';
+			$return['action'] = 'register';
+	    }else{
+	    	$return['result'] = false;
+			$return['error'] = __('Registration has been disabled.','login-with-ajax');
+	    }
 		return $return;
 	}
 
@@ -312,11 +320,10 @@ class LoginWithAjax {
 
 	public static function loginRedirect( $redirect, $redirect_notsurewhatthisis, $user ){
 		$data = self::$data;
-		if(is_user_logged_in()){
+		if( is_object($user) ){
 			$lwa_redirect = self::getLoginRedirect($user);
 			if( $lwa_redirect != '' ){
-				wp_redirect($lwa_redirect);
-				exit();
+				$redirect = $lwa_redirect;
 			}
 		}
 		return $redirect;
@@ -348,10 +355,11 @@ class LoginWithAjax {
 					$redirect = $data["role_login"][$user_role."_".$code];
 				}
 			}
+			//Do user string replacements
+			$redirect = str_replace('%USERNAME%', $user->user_login, $redirect);
 		}
 		//Do string replacements
-		$redirect = str_replace('%USERNAME%', $user->user_login, $redirect);
-		$redirect = str_replace("%LASTURL%", $_SERVER['HTTP_REFERER'], $redirect);
+		$redirect = str_replace("%LASTURL%", wp_get_referer(), $redirect);
 		if( !empty($_REQUEST['icl_language_code']) ){
 			$redirect = str_replace("%LANG%", $code.'/', $redirect);
 		}
@@ -393,6 +401,7 @@ class LoginWithAjax {
 			'profile_link' => true,
 			'template' => 'default',
 			'registration' => true,
+			'redirect' => true,
 			'remember' => true
 		);
 		self::widget(shortcode_atts($defaults, $atts));
@@ -432,9 +441,9 @@ class LoginWithAjax {
 	 * @return string
 	 */
 	public static function locate_template_url($template_path){
-	    if( file_exists(get_stylesheet_directory().'/plugins/login-with-ajax/login-with-ajax.js') ){ //Child Theme (or just theme)
+	    if( file_exists(get_stylesheet_directory().'/plugins/login-with-ajax/'.$template_path) ){ //Child Theme (or just theme)
 	    	return trailingslashit(get_stylesheet_directory_uri())."plugins/login-with-ajax/$template_path";
-	    }else if( file_exists(get_template_directory().'/plugins/login-with-ajax/login-with-ajax.js') ){ //Parent Theme (if parent exists)
+	    }else if( file_exists(get_template_directory().'/plugins/login-with-ajax/'.$template_path) ){ //Parent Theme (if parent exists)
 	    	return trailingslashit(get_template_directory_uri())."plugins/login-with-ajax/$template_path";
 	    }
 	    //Default file in plugin folder

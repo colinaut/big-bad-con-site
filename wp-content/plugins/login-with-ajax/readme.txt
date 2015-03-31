@@ -1,9 +1,10 @@
-=== Login With Ajax ===
+﻿=== Login With Ajax ===
 Contributors: netweblogic
 Tags: login, ajax, ajax login, registration, redirect redirect, buddypress, multi site, sidebar, admin, widget
 Requires at least: 3.1
-Tested up to: 3.5.1
-Stable tag: 3.1.2
+Tested up to: 4.0
+Stable tag: 3.1.4
+License: GPLv2 or later
 
 Add smooth ajax login/registration effects and choose where users get redirected upon log in/out. Supports SSL, MultiSite, and BuddyPress.
 
@@ -50,10 +51,11 @@ Here's a list of currently translated languages. Translations that have been sub
 * Albanian - [Besnik Bleta](http://blogu.programeshqip.org/)
 * Spanish - Myself and [Danilo Casati](http://e-rgonomy.com)
 * Hungarian - Lorinc Borda
-* Japanese - [Ryuei Sasaki](http://riuiski.com)
+* Japanese - [Ryuei Sasaki](http://ryueisasaki.com/)
 * Arabic (SA) - Adel Madshel
 * Persian - [Mohammad Hosein Ameri](http://khandoon.ir/)
 * Afrikaans - [Johnny Dunhin](http://helpendehand.co.za)
+* Hebrew = Menachem Shapiro
 
 == Installation ==
 
@@ -85,7 +87,7 @@ We've tried to minimize potential conflicts arising from this, but you should co
 
 = Shortcodes & Template Tags =
 
-You can use the shortcode [login-with-ajax] or [lwa] and template tag login_with_ajax() with these options :
+You can use the [shortcode](http://codex.wordpress.org/Shortcode) [login-with-ajax] or [lwa] and [template tag](http://codex.wordpress.org/Template_Tags) `login_with_ajax()` with these options :
 
 * profile_link - (1 or 0)
  * If value is 1 (default), a profile link to wp-admin appears.
@@ -95,30 +97,39 @@ You can use the shortcode [login-with-ajax] or [lwa] and template tag login_with
  * If this template directory exists, this template will be used. Default is 'default' template.
 * remember - (1 or 0)
  * If value is 1 (default), a remember password link appears for password recovery
+* redirect
+ * Successful logins are redirected to this URL 
  
 = SSL Logins =
 
 To force SSL, see [http://codex.wordpress.org/Administration_Over_SSL]("this page"). The plugin will automatically detect the wordpress settings.
 
 = Customizing the Widget =
-You can customize the html widgets in an upgrade-safe manner. Firstly, you need to understand how Login With Ajax loads templates:
+You can customize the html widgets in an upgrade-safe manner by copying files and editing them within your theme. Firstly, you need to understand how Login With Ajax loads templates:
 
-* When looking for files/templates there is an order of precedence - active child theme (if applicable), active parent themes, and finally the plugin folder
-* Login With Ajax loads only one CSS and JS file. The plugin checks the locations above and loads the one it finds first. This was done to minimize the number of resources loaded, but means that if you have more than one template, you should add any extra CSS and JS to those single files.
- * login-with-ajax.js and login-with-ajax.css must be located in either:
-  * wp-content/themes/yourtheme/plugins/login-with-ajax/
-  * wp-content/plugins/login-with-ajax/widget/
-* Login With Ajax then checks for template folders, if two folders match names (e.g. you move default template to your theme) the order of precedence explained above applies.
- * These theme folders are located within :
-  * wp-content/themes/your-theme-or-child-theme/plugins/login-with-ajax/
-  * wp-content/plugins/login-with-ajax/widget/
-* When a user is logged out, the widget_out.php will be shown, otherwise widget_in.php. These are located in the template folder.
+* When looking for files/templates there is an order of precedence - active child theme (if applicable), active parent themes, and finally the plugin folder:
+  * `wp-content/themes/your-theme/plugins/login-with-ajax/`
+  * `wp-content/themes/parent-theme/plugins/login-with-ajax/`
+  * `wp-content/plugins/login-with-ajax/widget/`
 
-For example, if you wanted to change some text on the default theme, you could simply copy wp-content/plugins/login-with-ajax/widget/default to wp-content/themes/yourtheme/plugins/login-with-ajax/default and then just edit the files as needed.
+* Login With Ajax loads only one CSS and JS file which contains code for all templates. The plugin checks the locations above and loads the one it finds first. The default files are:
+ * `wp-content/plugins/login-with-ajax/widget/login-with-ajax.js`
+ * `wp-content/plugins/login-with-ajax/widget/widget.css`
+ 
+* One caveat for JavaScript files, if you've enabled WP_DEBUG, then LWA will look for a file called `login-with-ajax.source.js`, a non-minified version of the normal JS file.
 
-If you need to change the JS or CSS, copy the javascript file over to wp-content/themes/yourtheme/plugins/login-with-ajax/ (not within the template file) and edit accordingly.
+* Login With Ajax then checks for template folders which are loaded according to the preference highlighted above.
+  * When a user is logged out, the `widget_out.php` will be used.
+  * If logged out, then `widget_in.php` will be used
+  * If either of these files don't exist in your template, the one located in the default folder will be used (which you can also override in your theme). 
+  
+**Examples**
 
-The Javascript ajax magic relies on the class names within the template files, if you want to modify the templates, make sure you keep these class names.
+If you wanted to change some text on the default theme, you could simply copy `wp-content/plugins/login-with-ajax/widget/default` to `wp-content/themes/yourtheme/plugins/login-with-ajax/default` and edit the files as needed.
+
+If you need to change the CSS file, copy the file `wp-content/plugins/login-with-ajax/widget/widget.css` over to `wp-content/themes/yourtheme/plugins/login-with-ajax/widget.css` and edit accordingly.
+
+The JavaScript ajax magic relies on the class names and hierarchical structure within the template files, if you want to modify the templates without adding your own JS, make sure you keep these class names and structure intact.
 
 == Screenshots ==
 
@@ -153,6 +164,23 @@ For further questions and answers (or to submit one yourself) go to our [http://
 
 
 == Changelog ==
+= 3.1.4 =
+* fixed MIME type errors between HTTP <> HTTPS ajax requests,
+* added redirect shortcode attribute
+
+= 3.1.3 =
+* fixed JS/CSS file overriding problems
+* fixed class html error in widget/default/widget_in.php
+* fixed redirection issues when not using JS
+* fixed MultiSite registrations not adding user to blog with default role only 'subscriber' (props to Renato Baccaro)
+* fixed vulnerability where registration is still possible even if registration is disabled in settings (props to Kevin Niehage @weizenspreu)
+* fixed problems when trying to log in from an http page when admin ssl is enforced
+* fixed CSS to hide table borders of default widget for the twenty fourteen theme
+* added Hebrew, thanks to Menachem Shapiro
+* fixed HTML validation issues in widgets
+* added error fallback during ajax request
+* added new icons and headers for wordpress.org plugin pages
+* added redirect shortcode attribute for custom redirect
 
 = 3.1.2 =
 * updated Russian, Swedish and POT language files

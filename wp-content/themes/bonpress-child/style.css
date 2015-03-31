@@ -1,0 +1,272 @@
+/*
+Theme Name:     My Bonpress Child
+Theme URI:
+Description:    My Child theme
+Author:         Author Name
+Author URI:
+Template:       Bonpress
+Version:        1.0
+*/
+
+@import url("../bonpress/style.css");
+
+html {
+	box-sizing: border-box;
+}
+*, *:before, *:after {
+	box-sizing: inherit;
+}
+
+html {
+	font-size:62.5%;
+}
+body{
+	font-size: 16px;
+	font-size: 1.6rem;
+	line-height: 160%;
+	border: 0;
+	background: #01003a url(/wp-content/themes/bonpress-child/images/space-2.jpg) no-repeat;
+	background-attachment: fixed;
+	background-size: contain;
+}
+.entry {
+	font-size: inherit;
+	line-height: inherit;
+	color: #303030;
+	background: #fafaf6;
+	min-height: 400px;
+	-webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+}
+
+.wrapper, #footer {
+	max-width: 1224px;
+	margin: 0;
+	width: auto;
+	float: none;
+}
+#footer .widgets { padding: 20px 0 20px 285px; }
+#footer .widecol .widget { width: auto;}
+#footer div.widecol {width: auto;float: none;}
+
+#aside {
+	position: fixed;
+	background: none;
+	margin: 0;
+	top:0;
+	background: url(/wp-content/themes/bonpress-child/images/wolf-and-moon.png) no-repeat right 5px;
+}
+.admin-bar #aside {
+	margin-top:32px;
+}
+
+#main, #footer .widgets {
+	margin-left: 305px;
+}
+#main {
+	float: none;
+	width: auto;
+	min-width: 700px;
+	/padding-top: 174px;
+	background: none;
+	/background: transparent url(/wp-content/themes/bonpress-child/images/bbc-original-header.jpg) no-repeat;
+	background-size: contain;
+}
+
+#content {
+	margin-top: 0;
+	background: transparent;
+}
+.post {
+	background: transparent;
+	border: none;
+}
+#menu {
+	text-align: right;
+	margin: 0;
+}
+#menu a {
+	background: rgba(241, 89, 42, 0);
+	transition: background-color 0.3s ease;
+	padding: 4px 12px;
+	color: #feffdf;
+	font-family: 'Oswald', sans-serif;
+	text-align: right;
+	font-weight: 700;
+	display: inline-block;
+	font-size: 1.6rem;
+}
+#menu li:hover {
+	background: none;
+}
+#menu a:hover  {
+	background: rgba(241, 89, 42, 1);
+}
+#menu .current-menu-item a {
+	background: #395571;
+}
+
+.entry {
+	padding: 40px 50px 30px 50px;
+	border-bottom: 4px solid #234;
+	border-top: 4px solid #234;
+
+}
+.page .entry {
+	border-bottom: 4px solid #234;
+}
+.post_top {
+	background: transparent url(/wp-content/themes/bonpress-child/images/space-ranger.png) no-repeat right 0;
+	min-height: 150px;
+	padding: 30px 60px 0 60px;
+	border-bottom: 0;
+	text-align: left;
+}
+.article_top small {
+	color: #aaa;
+	font-size: 90%;
+}
+.post_top h2 {
+	padding: 0;
+	border: 0;
+}
+.post_top h1 a, .post_top h1 {
+	font-family: 'Oswald', sans-serif;
+	color: #f78b26;
+	font-size: 5.2rem;
+	font-weight: 400;
+	margin: 0;
+	line-height: 140%;
+	text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.88);
+}
+.article_top {
+	background: #234;
+	padding: 20px 60px 10px 60px;
+}
+.article_top h2, .article_top h2 a {
+	color: #fff;
+	border: 0;
+	font-family: 'Oswald', sans-serif;
+	font-size: 3.2rem;
+	font-weight: 400;
+	margin: 0;
+	padding: 0;
+}
+#logo {
+	background: none;
+	padding: 10px 0 0;
+	/display: none;
+}
+#logo img {
+	visibility: hidden;
+}
+
+/* Sidebar */
+#sidebar {
+	padding: 20px 25px 5px;
+	margin: 15px 0 0;
+	background: #234;
+}
+#sidebar .widget {
+	font-size: 14px;
+	font-size: 1.4rem;
+}
+.nav_menu-3 a {
+	width: 100%;
+	display: block;
+	text-align: center;
+	background: #f16e50;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	color: #fff;
+}
+#sidebar .widget h3 {
+	background: none;
+	text-align: left;
+	font-family: inherit;
+	font-size: 1.6rem;
+	text-transform: none;
+	padding: 0;
+}
+
+/* Footer */
+#footer {
+	background: none;
+	border: none;
+}
+#footer .widgets {
+	padding: 20px 0 20px 0px;
+	border-top: 4px solid rgba(241, 89, 42, 1);
+}
+#footer .copyright {
+	margin-left: 285px;
+	width: auto;
+	padding: 10px 0 10px 0px;
+}
+/* Events */
+#current-events {
+	font-size: 1.4rem;
+	line-height: 130%;
+}
+td, th {
+	padding: 6px;
+}
+
+.entry thead {
+	background: #9fbac8;
+}
+th {
+	text-align: left;
+}
+.entry tbody tr:nth-of-type(odd) {
+	background-color:#efefe9;
+}
+#event-time {
+	width: 150px;
+}
+#current-events {
+	margin: 20px -50px;
+}
+
+@media only screen and (min-width: 640px) and (max-width: 1024px) {
+	#footer .copyright, #footer .widgets, #main {
+		margin-left: 28%;
+		min-width: intrinsic;
+	}
+	.entry, .post_top {
+		padding-left: 30px;
+		padding-right: 30px;
+	}
+	#current-events {
+		margin: 20px -30px;
+		font-size: 1.1rem;
+	}
+}
+
+@media only screen and (min-width: 320px) and (max-width: 640px) {
+	#aside {
+		position: relative;
+		top: 0px;
+		overflow: hidden;
+	}
+	.post_top {background: none;padding-top: 30px;}
+	#footer .copyright, #footer .widgets, #main {
+		margin-left: 0;
+		min-width: intrinsic;
+	}
+	#main {clear:both;}
+	.entry, .post_top {
+		padding-left: 20px;
+		padding-right: 20px;
+		top:0px;
+	}
+	.post_top h1 a, .post_top h2 a, .post_top h1 {
+		font-size: 4.2rem;
+	}
+	#current-events {
+		margin: 20px -20px;
+		font-size: 1.1rem;
+	}
+}

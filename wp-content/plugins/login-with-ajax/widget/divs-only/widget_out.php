@@ -7,7 +7,7 @@
 ?>
 <div class="lwa lwa-divs-only">
 	<span class="lwa-status"></span>
-	<form name="lwa-form" class="lwa-form" action="<?php echo esc_attr(LoginWithAjax::$url_login); ?>" method="post">
+	<form class="lwa-form" action="<?php echo esc_attr(LoginWithAjax::$url_login); ?>" method="post">
 		<div class="lwa-username">
 			<label><?php esc_html_e( 'Username','login-with-ajax' ) ?></label>
 			<input type="text" name="log" id="lwa_user_login" class="input" />
@@ -26,6 +26,9 @@
 			<input type="submit" name="wp-submit" id="lwa_wp-submit" value="<?php esc_attr_e('Log In','login-with-ajax'); ?>" tabindex="100" />
 			<input type="hidden" name="lwa_profile_link" value="<?php echo esc_attr($lwa_data['profile_link']); ?>" />
 			<input type="hidden" name="login-with-ajax" value="login" />
+			<?php if( !empty($lwa_data['redirect']) ): ?>
+			<input type="hidden" name="redirect_to" value="<?php echo esc_url($lwa_data['redirect']); ?>" />
+			<?php endif; ?>
 		</div>
 		
 		<div class="lwa-links">
@@ -41,7 +44,7 @@
 		</div>
 	</form>
 	<?php if( !empty($lwa_data['remember']) ): ?>
-	<form name="lwa-remember" class="lwa-remember" action="<?php echo esc_attr(LoginWithAjax::$url_remember); ?>" method="post" style="display:none;">
+	<form class="lwa-remember" action="<?php echo esc_attr(LoginWithAjax::$url_remember); ?>" method="post" style="display:none;">
 		<p><strong><?php esc_html_e("Forgotten Password",'login-with-ajax'); ?></strong></p>
 		<div class="lwa-remember-email">  
 			<?php $msg = __("Enter username or email",'login-with-ajax'); ?>
@@ -57,7 +60,7 @@
 	<?php endif; ?>
 	<?php if ( $lwa_data['registration'] == true ) : ?>
 	<div class="lwa-register" style="display:none;" >
-		<form name="registerform" id="registerform" action="<?php echo esc_attr(LoginWithAjax::$url_register); ?>" method="post">
+		<form class="registerform" action="<?php echo esc_attr(LoginWithAjax::$url_register); ?>" method="post">
 			<p><strong><?php esc_html_e('Register For This Site','login-with-ajax'); ?></strong></p>         
 			<div class="lwa-username">
 				<?php $msg = __('Username','login-with-ajax'); ?>

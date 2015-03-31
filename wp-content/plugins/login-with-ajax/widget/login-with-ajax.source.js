@@ -31,10 +31,17 @@ jQuery(document).ready( function($) {
  		}
 		$('<div class="lwa-loading"></div>').prependTo(form);
 		//Make Ajax Call
-		$.post(form.attr('action'), form.serialize(), function(data){
-			lwaAjax( data, statusElement );
-			$(document).trigger('lwa_' + data.action, [data, form]);
-		}, "jsonp");
+		$.ajax({
+			type : 'POST',
+			url : form.attr('action'),
+			data : form.serialize(),
+			success : function(data){
+				lwaAjax( data, statusElement );
+				$(document).trigger('lwa_' + data.action, [data, form]);
+			},
+			error : function(){ lwaAjax({}, statusElement); },
+			dataType : 'jsonp'
+		});
 		//trigger event
 	});
  	

@@ -41,7 +41,7 @@ function uuc_options_page() {
 			<div id="htmlblockbg" <?php if ($uuc_options['holdingpage_type'] == "custom"){ ?> style="visibiliy: hidden; display: none;"<?php }; ?>>
 				<h4 class="uuc-title"><?php _e('HTML Block', 'uuc_domain'); ?></h4>
 				<p>
-					<textarea id="uuc_settings[html_block]" name="uuc_settings[html_block]" rows="10" cols="75"><?php if (isset($uuc_options['html_block'])) echo $uuc_options['html_block']; ?></textarea>
+					<textarea class="theEditor" name="uuc_settings[html_block]" id="uuc_settings[html_block]" rows="10" cols="75"><?php if (isset($uuc_options['html_block'])) echo $uuc_options['html_block']; ?></textarea>
 					<label class="description" for="uuc_settings[html_block]"><?php _e('<br />Enter the HTML - Advised for advanced users only!<br />Will display exactly as entered.', 'uuc_domain'); ?></label>
 				</p>
 			</div>
@@ -168,7 +168,7 @@ function uuc_options_page() {
 
 function admin_register_head() {
     $siteurl = get_option('siteurl');
-    $url = $siteurl . '/wp-content/plugins/' . basename(dirname(__FILE__)) . 'css/plugin_styles.css';
+    $url = $siteurl . '/wp-content/plugins/ultimate-under-construction/includes/css/plugin_styles.css';
     echo "<link rel='stylesheet' type='text/css' href='$url' />\n";
 }
 add_action('admin_head', 'admin_register_head');

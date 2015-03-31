@@ -90,7 +90,7 @@ class FrmProStatisticsController{
                 
                 // add an untruncated tooltip
                 if ( isset($tooltips[$lkey]) ) {
-                    $row[] = $tooltips[$lkey] .': '. $row[1];
+                    $row['tooltip'] = $tooltips[$lkey] .': '. $row[1];
                 }
                 
                 $rows[] = $row;  
@@ -221,6 +221,11 @@ class FrmProStatisticsController{
 			$start_date = $wpdb->prepare('%s', date('Y-m-d', strtotime($start_date)));
 		}
         
+		//If end date is set, prepare the end date
+		if ( $end_date ) {
+			$end_date = $wpdb->prepare('%s', date('Y-m-d', strtotime($end_date)));
+		}
+                
         if($x_axis){
 			if ( is_numeric($x_axis) ){
 				$x_field = $frm_field->getOne($x_axis);
@@ -292,10 +297,15 @@ class FrmProStatisticsController{
 				$x_query .= " AND e.id in ({$entry})";
             }
 
-			if ( $start_date ) {//If start_date is set
-				$query .= " AND em.created_at >= $start_date";
-				$x_query .= " AND e.created_at >= $start_date";
-			}
+            if ( $start_date ) {//If start_date is set
+            	$query .= " AND e.created_at >= $start_date";
+            	$x_query .= " AND e.created_at >= $start_date";
+            }
+            
+            if ( $end_date ) {//If end_date is set
+            	$query .= " AND e.created_at <= $end_date";
+            	$x_query .= " AND e.created_at <= $end_date";
+            }
 
             $query .= " AND is_draft=0";
             $x_query .= " AND is_draft=0";
@@ -366,9 +376,12 @@ class FrmProStatisticsController{
 				} else if ( $entry ) { //If entry_id parameter is set, only get data for this entry
 					$query .= " AND item_id in ({$entry})";
 				}
-				if ( $start_date ) {
-					$query .= " AND em.created_at >= $start_date";
-				}
+                if ( $start_date ) {
+                    $query .= " AND e.created_at >= $start_date";
+                }
+                if ( $end_date ) {
+                    $query .= " AND e.created_at <= $end_date";
+                }
                 $f_inputs[$f_id] = $wpdb->get_results($query, ARRAY_A);
                 unset($query);
             }
@@ -391,24 +404,24 @@ class FrmProStatisticsController{
 						$inputs = $wpdb->get_col("SELECT {$field->field_options['post_field']} FROM $wpdb->posts WHERE ID in (".implode(',', $post_ids) .")");
 					$skip_posts_code = true;
 				}else{
-					$inputs = $wpdb->get_col("SELECT meta_value FROM $frmdb->entry_metas em LEFT JOIN $frmdb->entries e ON (e.id=em.item_id) WHERE is_draft=0 AND em.field_id='". (int)$field->id ."' AND item_id in (". implode(',', $entry_ids).")". ( $user_id ? " AND user_id=". (int)$user_id : '') . ( $start_date ? " AND em.created_at >= $start_date" : ''));
+                    $inputs = $wpdb->get_col("SELECT meta_value FROM $frmdb->entry_metas em LEFT JOIN $frmdb->entries e ON (e.id=em.item_id) WHERE is_draft=0 AND em.field_id='". (int)$field->id ."' AND item_id in (". implode(',', $entry_ids).")". ( $user_id ? " AND user_id=". (int)$user_id : '') . ( $start_date ? " AND e.created_at >= $start_date" : '') . ( $end_date ? " AND e.created_at <= $end_date" : ''));
 				}
 				
 				//If there are multiple fields being graphed
 				foreach($fields as $f_id => $f){
 	                if($f_id != $field->id)
-	                    $f_inputs[$f_id] = $wpdb->get_col("SELECT meta_value FROM $frmdb->entry_metas em LEFT JOIN $frmdb->entries e ON (e.id=em.item_id) WHERE is_draft=0 AND em.field_id='{$f_id}' AND item_id in (". implode(',', $entry_ids).")". ( $user_id ? " AND user_id=". (int)$user_id : '') . ( $start_date ? " AND em.created_at >= $start_date" : ''));
+                        $f_inputs[$f_id] = $wpdb->get_col("SELECT meta_value FROM $frmdb->entry_metas em LEFT JOIN $frmdb->entries e ON (e.id=em.item_id) WHERE is_draft=0 AND em.field_id='{$f_id}' AND item_id in (". implode(',', $entry_ids).")". ( $user_id ? " AND user_id=". (int)$user_id : '') . ( $start_date ? " AND e.created_at >= $start_date" : '') . ( $end_date ? " AND e.created_at <= $end_date" : ''));
 	                unset($f_id);
 	                unset($f);
 	            }
 			}		
         }else{ 
 			if( $user_id ) { //If UserID is the only filtering parameter defined
-                $inputs = $wpdb->get_col($wpdb->prepare("SELECT meta_value FROM {$wpdb->prefix}frm_item_metas em LEFT JOIN {$wpdb->prefix}frm_items e ON (e.id=em.item_id) WHERE is_draft=%d AND em.field_id=%d AND user_id=%d" . ( $start_date ? " AND em.created_at >= $start_date" : ''), 0, $field->id, $user_id));
+                $inputs = $wpdb->get_col($wpdb->prepare("SELECT meta_value FROM {$wpdb->prefix}frm_item_metas em INNER JOIN {$wpdb->prefix}frm_items e ON (e.id=em.item_id) WHERE is_draft=%d AND em.field_id=%d AND user_id=%d" . ( $start_date ? " AND e.created_at >= $start_date" : '') . ( $end_date ? " AND e.created_at <= $end_date" : ''), 0, $field->id, $user_id));
 			} else if ( $entry ) { //If entry ID is the only filtering parameter defined
-				$inputs = $wpdb->get_col($wpdb->prepare("SELECT meta_value FROM {$wpdb->prefix}frm_item_metas em LEFT JOIN {$wpdb->prefix}frm_items e ON (e.id=em.item_id) WHERE is_draft=%d AND em.field_id=%d AND em.item_id in ({$entry})", 0, $field->id));
+				$inputs = $wpdb->get_col($wpdb->prepare("SELECT meta_value FROM {$wpdb->prefix}frm_item_metas em INNER JOIN {$wpdb->prefix}frm_items e ON (e.id=em.item_id) WHERE is_draft=%d AND em.field_id=%d AND em.item_id in ({$entry})", 0, $field->id));
 			} else { //If no user ID, atts, or x_axis defined
-				$inputs = $wpdb->get_col($wpdb->prepare("SELECT em.meta_value FROM {$wpdb->prefix}frm_item_metas em INNER JOIN {$wpdb->prefix}frm_items e ON (e.id=em.item_id) WHERE em.field_id=%d AND e.is_draft=%d" . ( $start_date ? " AND em.created_at >= $start_date" : ''), $field->id, 0));
+                $inputs = $wpdb->get_col($wpdb->prepare("SELECT em.meta_value FROM {$wpdb->prefix}frm_item_metas em INNER JOIN {$wpdb->prefix}frm_items e ON (e.id=em.item_id) WHERE em.field_id=%d AND e.is_draft=%d" . ( $start_date ? " AND e.created_at >= $start_date" : '') . ( $end_date ? " AND e.created_at <= $end_date" : ''), $field->id, 0));
 			}
 			
             foreach ( $fields as $f_id => $f ) { //Get the meta_values for additional fields being graphed
@@ -1041,15 +1054,23 @@ class FrmProStatisticsController{
     
     static function convert_to_google($rows, $cols, $options, $type) {
         $gcontent = '';
-
+        $num_col = array();
+        
         if(!empty($cols)){
+            $pos = 0;
             foreach((array)$cols as $col_name => $col){
                 $gcontent .= "data.addColumn('". $col['type'] ."','". addslashes($col_name) ."');";
-                unset($col_name);
-                unset($col);
+                
+                // save the number cols so we can make sure they are formatted correctly below
+                if ( 'number' == $col['type'] ) {
+                    $num_col[] = $pos;
+                }
+                $pos++;
+                
+                unset($col_name, $col);
             }
         }
-     
+        
         if(!empty($rows)){
             if($type == 'table'){
                 $last = end($rows);
@@ -1061,11 +1082,32 @@ class FrmProStatisticsController{
                     unset($row);
                 }
             }else{
-                if ( count(reset($rows)) >= 3 ) {
+                $row_one = reset($rows);
+                if ( isset($row_one['tooltip']) ) {
                     $gcontent .= "data.addColumn({type:'string',role:'tooltip'});";
+                    
+                    // remove the tooltip key from the array
+                    foreach ( $rows as $row_k => $row ) {
+                        $tooltip = $row['tooltip'];
+                        unset($rows[$row_k]['tooltip']);
+                        $rows[$row_k][] = $tooltip;
+                        unset($tooltip, $row_k, $row);
+                    }
                 }
                 
-                $gcontent .= "data.addRows(". json_encode($rows). ");\n";
+                // make sure number fields are displayed as numbers
+                if ( ! empty($num_col) ) {
+                    foreach ( $rows as $row_k => $row ) {
+                        foreach ( $num_col as $k ) {
+                            $rows[$row_k][$k] = (float) $rows[$row_k][$k];
+                            unset($k);
+                        }
+                        
+                        unset($row_k, $row);
+                    }
+                }
+                
+                $gcontent .= "data.addRows(". json_encode($rows) .");\n";
             }
         }
         
@@ -1227,7 +1269,7 @@ class FrmProStatisticsController{
             'title'=> '', 'type' => 'default', 'x_axis' => false, 'data_type' => 'count', 'limit' => '',
             'x_start' => '', 'x_end' => '', 'show_key' => false, 'min' => '', 'max' => '', 'y_title' => '', 'x_title' => '',
             'include_zero' => false, 'field' => false, 'title_size' => '', 'title_font' => '', 'tooltip_label' => '',
-			'start_date' => '', 'group_by' => '', 'x_order' => '1'
+			'start_date' => '', 'end_date' => '', 'group_by' => '', 'x_order' => '1'
         );
         
         if($type == 'geo'){
@@ -1310,7 +1352,7 @@ class FrmProStatisticsController{
             $frm_gr_count = 0;
 
         foreach ($fields as $field){
-            $data = self::get_google_graph($field, compact('ids', 'colors', 'grid_color', 'bg_color', 'is3d', 'truncate', 'truncate_label', 'response_count', 'user_id', 'entry', 'type', 'x_axis', 'data_type', 'limit', 'x_start', 'x_end', 'show_key', 'min', 'max', 'y_title', 'x_title', 'include_zero', 'width', 'height', 'title', 'title_size', 'title_font', 'tooltip_label', 'start_date', 'group_by', 'x_order', 'atts' /*other field ID*/));
+            $data = self::get_google_graph($field, compact('ids', 'colors', 'grid_color', 'bg_color', 'is3d', 'truncate', 'truncate_label', 'response_count', 'user_id', 'entry', 'type', 'x_axis', 'data_type', 'limit', 'x_start', 'x_end', 'show_key', 'min', 'max', 'y_title', 'x_title', 'include_zero', 'width', 'height', 'title', 'title_size', 'title_font', 'tooltip_label', 'start_date', 'end_date', 'group_by', 'x_order', 'atts' /*other field ID*/));
             
 			if ( empty($data) ) {
 				$html .= '<div class="frm_no_data_graph">No Data</div>';

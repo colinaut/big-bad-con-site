@@ -471,7 +471,7 @@ class FrmProFieldsController{
     }
     
     public static function ajax_get_data(){
-        $entry_id = FrmAppHelper::get_param('entry_id'); 
+        $entry_id = trim(FrmAppHelper::get_param('entry_id'), ','); 
         $field_id = FrmAppHelper::get_param('field_id');
         $current_field = (int)FrmAppHelper::get_param('current_field');
         
@@ -508,8 +508,9 @@ class FrmProFieldsController{
         if(is_array($meta_value))
             $meta_value = implode(', ', $meta_value);
         
-        if($value and !empty($value))
-            echo "<p class='frm_show_it'>". $value ."</p>\n";
+        if ( $value && ! empty($value) ) {
+            echo apply_filters('frm_show_it', "<p class='frm_show_it'>". $value ."</p>\n", $value, array('field' => $data_field, 'value' => $meta_value, 'entry_id' => $entry_id));
+        }
             
         $current_field = (array)$current;
         foreach($current->field_options as $o => $v){

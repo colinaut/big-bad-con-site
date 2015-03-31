@@ -7,6 +7,7 @@
 ?>
 	<div class="lwa lwa-default"><?php //class must be here, and if this is a template, class name should be that of template directory ?>
         <form class="lwa-form" action="<?php echo esc_attr(LoginWithAjax::$url_login); ?>" method="post">
+        	<div>
         	<span class="lwa-status"></span>
             <table>
                 <tr class="lwa-username">
@@ -31,6 +32,9 @@
                         <input type="submit" name="wp-submit" id="lwa_wp-submit" value="<?php esc_attr_e('Log In', 'login-with-ajax'); ?>" tabindex="100" />
                         <input type="hidden" name="lwa_profile_link" value="<?php echo esc_attr($lwa_data['profile_link']); ?>" />
                         <input type="hidden" name="login-with-ajax" value="login" />
+						<?php if( !empty($lwa_data['redirect']) ): ?>
+						<input type="hidden" name="redirect_to" value="<?php echo esc_url($lwa_data['redirect']); ?>" />
+						<?php endif; ?>
                     </td>
                     <td class="lwa-submit-links">
                         <input name="rememberme" type="checkbox" class="lwa-rememberme" value="forever" /> <label><?php esc_html_e( 'Remember Me','login-with-ajax' ) ?></label>
@@ -45,9 +49,11 @@
                     </td>
                 </tr>
             </table>
+            </div>
         </form>
         <?php if( !empty($lwa_data['remember']) ): ?>
         <form class="lwa-remember" action="<?php echo esc_attr(LoginWithAjax::$url_remember) ?>" method="post" style="display:none;">
+        	<div>
         	<span class="lwa-status"></span>
             <table>
                 <tr>
@@ -70,6 +76,7 @@
                     </td>
                 </tr>
             </table>
+            </div>
         </form>
         <?php endif; ?>
 		<?php if( get_option('users_can_register') && !empty($lwa_data['registration']) ): ?>
@@ -77,6 +84,7 @@
 			<h4><?php esc_html_e('Register For This Site','login-with-ajax') ?></h4>
 			<p><em class="lwa-register-tip"><?php esc_html_e('A password will be e-mailed to you.','login-with-ajax') ?></em></p>
 			<form class="lwa-register-form" action="<?php echo esc_attr(LoginWithAjax::$url_register); ?>" method="post">
+				<div>
 				<span class="lwa-status"></span>
 				<p class="lwa-username">
 					<label><?php esc_html_e('Username','login-with-ajax') ?><br />
@@ -92,6 +100,7 @@
 					<input type="submit" name="wp-submit" id="wp-submit" class="button-primary" value="<?php esc_attr_e('Register', 'login-with-ajax'); ?>" tabindex="100" />
 				</p>
 		        <input type="hidden" name="login-with-ajax" value="register" />
+		        </div>
 			</form>
 		</div>
 		<?php endif; ?>

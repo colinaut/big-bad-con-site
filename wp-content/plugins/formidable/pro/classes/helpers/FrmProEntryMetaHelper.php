@@ -63,7 +63,7 @@ class FrmProEntryMetaHelper{
         );
         
         $atts = wp_parse_args( $atts, $defaults );
-        $field->field_options = maybe_unserialize($field->field_options);
+        $atts = apply_filters('frm_display_value_atts', $atts, $field, $value);
         
         if(!isset($field->field_options['post_field']))
             $field->field_options['post_field'] = '';

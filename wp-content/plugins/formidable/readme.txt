@@ -4,26 +4,26 @@ Donate link: http://formidablepro.com/donate
 Tags: admin, AJAX, captcha, contact, contact form, database, email, feedback, form, forms, javascript, jquery, page, plugin, poll, Post, spam, survey, template, widget, wpmu, form builder
 Requires at least: 3.3
 Tested up to: 4.0
-Stable tag: 1.07.10
+Stable tag: 1.07.11
 
-Quickly and easily build forms with a simple drag-and-drop interface and in-place editing. 
+Quickly and easily build WordPress forms with a simple drag-and-drop interface and in-place editing. 
 
 == Description ==
-Quickly and easily build forms with a simple drag-and-drop interface and in-place editing.
+Quickly and easily build WordPress forms with a simple drag-and-drop interface and in-place editing.
 There are dozens of form-building plugins out there to create forms, but most are confusing and overly complicated. With Formidable, it is easy to create forms within a simple drag-and-drop interface. You can construct custom forms or generate them from a template. Shortcodes can be used as well as spam catching services.
 
 [View Documentation](http://formidablepro.com/knowledgebase/ "View Documentation")
 
 = Features =
-* Save all responses to the database (even in the free version) for future retrieval, reports, and display in [Formidable Pro](http://formidablepro.com/ "Formidable Pro") Learn more at: http://formidablepro.com
+* Save all responses to your WordPress database (even in the free version) for future retrieval, reports, and display in [Formidable Pro](http://formidablepro.com/ "Formidable Pro") Learn more at: http://formidablepro.com
 * Integrate with reCAPTCHA and Akismet for Spam control (and a math captcha plugin in Pro)
 * Shortcode [formidable id=x] for use in pages, posts, or text widgets
-* Alternatively use `<?php echo FrmFormsController::show_form(2, $key = '', $title=true, $description=true); ?>` in your template
 * Most of the form HTML is customizable on the form settings pages
 * Create forms from existing templates or add your own. A contact form template is included.
 * Direct links available for previews and emailing surveys with and without integration with your current theme.
 * Select an email address to send form responses on the form settings page under the "Emails" tab. This defaults to send to the admin email in your WordPress settings.
-* Use default values in form fields with the option to clear when clicked
+* Use placeholder default values in form fields that clear when clicked
+* Alternatively use `<?php echo FrmFormsController::show_form(2, $key = '', $title=true, $description=true); ?>` in your template
 * PHP ninjas can display data in templates using PHP functions found in the files in formidable/classes/models. However, there is currently no documentation for these functions.
 * Pro users can view, add, edit, and delete entries from the back- or front-end
 
@@ -34,7 +34,7 @@ There are dozens of form-building plugins out there to create forms, but most ar
 4. Use shortcode [formidable id=x] in pages, posts, or text widgets.
 
 == Screenshots ==
-1. Create beautiful forms without any code.
+1. Create beautiful WordPress forms without any code.
 2. Form creation page
 3. Field Options and CSS Layout Classes
 4. Field Options for checkbox fields
@@ -64,6 +64,22 @@ A. Try clearing your browser cache. As plugin modifications are made, frequent j
 [See more FAQs](http://formidablepro.com/formidable-faqs/ "Formidable Pro FAQs")
 
 == Changelog ==
+= 1.07.11 =
+* Added hook: frm_check_blacklist for disabling the comment blacklist spam check
+* Make nonce id unique per form
+* Make sure there is at least one word before truncation
+* Pro: Check conditional logic when importing dependent data from entries data
+* Pro: Added number field min and max settings to php validation
+* Pro: Added dynamic height to the chosen search field
+* Pro: Allow HTML in the message for the frm-entry-update-field shortcode
+* Pro: Added title parameter to frm-entry-update-field, frm-entry-edit-link, and frm-entry-delete-link
+* Pro: Added end_date parameter to frm-stats shortcode
+* Pro: Added hook: frm_display_value_atts
+* Pro: Added hook: frm_after_duplicate_entry
+* Pro: Added hook: frm_show_it
+* Pro: Add nonce check for importing entries
+* Pro: Fixed display of files with an icon when editing an entry
+
 = 1.07.10 =
 * Improve ajax form load speed on form builder page
 * Added 4.0 compatibility for deprecated like_escape function
