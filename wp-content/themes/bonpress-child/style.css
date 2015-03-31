@@ -253,7 +253,7 @@ th {
 		top: 0px;
 		overflow: hidden;
 	}
-	.post_top {background: none;padding-top: 30px;}
+	.post_top {padding-top: 30px;}
 	#footer .copyright, #footer .widgets, #main {
 		margin-left: 0;
 		min-width: intrinsic;
@@ -270,5 +270,8 @@ th {
 	#current-events {
 		margin: 20px -20px;
 		font-size: 1.1rem;
+	}
+	body {
+		background-size: auto;
 	}
 }
